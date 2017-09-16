@@ -18,12 +18,13 @@ class SentMemesTableViewController: UITableViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         memes = appDelegate.memes
         
-        self.tableView.separatorStyle = .none
+        tableView.separatorStyle = .none
     }
     override func viewWillAppear(_ animated: Bool) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         memes = appDelegate.memes
-        self.tableView.reloadData()
+        tableView.reloadData()
+        tabBarController?.tabBar.isHidden = false
     }
 
     // MARK: - Table view data source
@@ -42,7 +43,7 @@ class SentMemesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableCell", for: indexPath)
-        let meme = self.memes[(indexPath as NSIndexPath).row]
+        let meme = memes[(indexPath as NSIndexPath).row]
         
         cell.imageView?.image = meme.memedImage
         
@@ -55,11 +56,21 @@ class SentMemesTableViewController: UITableViewController {
         cell.imageView?.image! = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        
         //set description
         cell.textLabel?.text = meme.topText + "..." + meme.bottomText
         
         return cell
+    }
+    
+    // MARK: - Table view delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let meme = memes[(indexPath as NSIndexPath).row]
+        let detailsVC = storyboard?.instantiateViewController(withIdentifier: "MemeDetailsViewController") as? MemeDetailsViewController
+        detailsVC?.image = meme.memedImage
+        
+        tabBarController?.tabBar.isHidden = true
+        navigationController?.pushViewController(detailsVC!, animated: true)
     }
 
     // MARK: - Navigation

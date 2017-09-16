@@ -185,6 +185,41 @@
             </objects>
             <point key="canvasLocation" x="2121" y="-422"/>
         </scene>
+        <!--Meme Details View Controller-->
+        <scene sceneID="5Rz-Nj-Ttv">
+            <objects>
+                <viewController storyboardIdentifier="MemeDetailsViewController" id="tm7-lc-coo" customClass="MemeDetailsViewController" customModule="MemeMeFinal" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="At7-WP-9wC"/>
+                        <viewControllerLayoutGuide type="bottom" id="yOi-8b-Btr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TzN-E3-Mt7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fjA-Bk-Xro">
+                                <rect key="frame" x="16" y="20" width="343" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="ZwW-Yy-DNA"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fjA-Bk-Xro" firstAttribute="centerX" secondItem="TzN-E3-Mt7" secondAttribute="centerX" id="7lv-dl-Eyk"/>
+                            <constraint firstItem="fjA-Bk-Xro" firstAttribute="top" secondItem="At7-WP-9wC" secondAttribute="bottom" id="Esf-Az-16T"/>
+                            <constraint firstItem="yOi-8b-Btr" firstAttribute="top" secondItem="fjA-Bk-Xro" secondAttribute="bottom" id="j1S-bo-XYb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="fjA-Bk-Xro" id="eIE-xx-fzx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dmA-Vo-0dC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2121" y="322"/>
+        </scene>
         <!--Table-->
         <scene sceneID="64z-yb-eBd">
             <objects>
@@ -213,15 +248,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeTableCell" textLabel="VS2-Bd-cfx" style="IBUITableViewCellStyleDefault" id="G8M-6I-SlG">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeTableCell" textLabel="VS2-Bd-cfx" style="IBUITableViewCellStyleDefault" id="G8M-6I-SlG">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G8M-6I-SlG" id="qad-ty-sj8">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VS2-Bd-cfx">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
