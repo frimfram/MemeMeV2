@@ -45,8 +45,6 @@ class SentMemesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableCell", for: indexPath)
         let meme = memes[(indexPath as NSIndexPath).row]
         
-        //cell.imageView?.image = meme.memedImage
-        
         //size the image view
         let imageSize: Int = 120
         let imageSizeCG = CGSize(width: imageSize, height: imageSize)
