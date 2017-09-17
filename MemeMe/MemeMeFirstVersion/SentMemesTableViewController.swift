@@ -45,21 +45,33 @@ class SentMemesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableCell", for: indexPath)
         let meme = memes[(indexPath as NSIndexPath).row]
         
-        cell.imageView?.image = meme.memedImage
+        //cell.imageView?.image = meme.memedImage
         
         //size the image view
         let imageSize: Int = 120
         let imageSizeCG = CGSize(width: imageSize, height: imageSize)
-        UIGraphicsBeginImageContextWithOptions(imageSizeCG, false, UIScreen.main.scale)
-        let imageRect = CGRect(x: 0, y: 0, width: imageSize, height: imageSize)
-        cell.imageView?.image!.draw(in: imageRect)
-        cell.imageView?.image! = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
+        let thumbnailImage = imageWith(image: meme.memedImage!, fillSize: imageSizeCG)
+        cell.imageView?.image = thumbnailImage
         
         //set description
         cell.textLabel?.text = meme.topText + "..." + meme.bottomText
         
         return cell
+    }
+    
+    func imageWith(image: UIImage, fillSize: CGSize) -> UIImage? {
+        let scale: CGFloat = max(fillSize.width/image.size.width, fillSize.height/image.size.height)
+        let width = image.size.width * scale
+        let height = image.size.height * scale
+        let x = (fillSize.width - width) / CGFloat(2)
+        let y = (fillSize.height - height) / CGFloat(2)
+        let thumbnailRect = CGRect(x: x, y: y, width: width, height: height)
+        
+        UIGraphicsBeginImageContextWithOptions(fillSize, false, 0)
+        image.draw(in: thumbnailRect)
+        let thumbnail = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return thumbnail
     }
     
     // MARK: - Table view delegate

@@ -86,6 +86,7 @@ class MemeEditorViewController: UIViewController {
         bottomText.text = textFieldInitialText.bottom.rawValue
         imageView.image = nil
         shareButton.isEnabled = false
+        dismiss(animated: true, completion: nil)
     }
     
     func style(textField: UITextField, initialText:String, tag: textFieldType) {
